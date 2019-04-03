@@ -1,57 +1,54 @@
-console.log('Hello World');
-
-const container = document.querySelector('.list');
-
 fetch('data.json')
-    .then(response => {
-        return response.json();
+    .then(function (res) {
+        return res.json();
     })
-    .then(data => {
-        console.log(data);
+    .then(function (data) {
+        // localStorage.setItem('json', JSON.stringify(data));
 
-        // map over 'data'
-        const showItem = data.map(item => {
-            let li = document.createElement('li');
-            let input = document.createElement('input');
-            input.setAttribute('type', 'button');
-            input.value = 'X';
-            
-            li.innerHTML = `${item.todo}`;
-            li.appendChild(input);
+        data.map(item => {
+            const { task, status, priority } = item;
 
-            
-            
-            container.appendChild(li);
-           
-            
+            let ul = document.createElement('ul');
+
+            ul.innerHTML = 
+            `
+            <li><b>${task}</b></li>
+            <li> Status : ${status}</li>
+            <li> Proprity: ${priority} </li>
+            `;
+
+            document.getElementById('result').appendChild(ul);
             
         });
 
-        console.log("OUTCOME", showItem);
+        // let storedNames = JSON.parse(localStorage.getItem("json"));
+        // console.log(storedNames);
+       })
 
+const input = document.querySelector('.additem');
+input.addEventListener('submit', addItem);
+function addItem(event) {
+    event.preventDefault();
 
-
-        console.log(showItem);
-        
-        onFormSubmit = (event) => {
-            event.preventDefault();
-            console.log('SUBMITTED');
-            const getInput = event.target.querySelector('input').value;
-            console.log(getInput);
-            
-            myJString = {"todo": getInput};
-            
-            data.push(myJString);
-            event.target.querySelector('input').value = "";
-            console.log(data);
-            
-            
-        }
-        const form = document.querySelector('.add');
+    const userInput = event.target.querySelector('input').value;
+    // myJString = {"todo": userInput};
+    console.log(userInput);
+    let newItem = document.createElement('ul');
     
-        form.addEventListener('submit', onFormSubmit);
+    newItem.innerHTML = 
+    `
+    <li><b>${userInput}</b></li>
+    <li></li>
+    <li></li>
+    `;
 
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
+
+
+
+
+
+    document.getElementById('result').appendChild(newItem);
+    event.target.querySelector('input').value = "";
+
+    console.log("SUBMITTED");
+}

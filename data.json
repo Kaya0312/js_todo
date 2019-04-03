@@ -1,7 +1,27 @@
 [
-    { "todo" : "Watch movies" },
-    { "todo" : "Read books" },
-    { "todo" : "Brush teeth" },
-    { "todo" : "Walk a dog" },
-    { "todo" : "Watch YouTube" }
+    {
+        "task" : "Watch movies",
+        "status" : "Finished",
+        "priority" : "Important"
+    },
+    {
+        "task" : "Read books",
+        "status" : "Finished",
+        "priority" : "Important" 
+    },
+    {
+        "task" : "Brush teeth",
+        "status" : "Finished",
+        "priority" : "Important" 
+    },
+    {
+        "task" : "Walk a dog",
+        "status" : "Finished",
+        "priority" : "Important" 
+    },
+    {
+        "task" : "Watch YouTube",
+        "status" : "Finished",
+        "priority" : "Important" 
+    }
 ]
