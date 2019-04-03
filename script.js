@@ -14,7 +14,7 @@ fetch('data.json')
             `
             <li><b>${task}</b></li>
             <li> ${priority} </li>
-            <li> Delete </li>
+            <li onClick="deleteItem(event)"> Delete </li>
             `;
 
             document.getElementById('result').appendChild(ul);
@@ -27,23 +27,59 @@ fetch('data.json')
 
 const input = document.querySelector('.additem');
 input.addEventListener('submit', addItem);
+
+
+
 function addItem(event) {
-    event.preventDefault();
+    const input = document.querySelector('.userInput');
+    const warning = document.querySelector('.warning');
 
-    const userInput = event.target.querySelector('input').value;
-    // myJString = {"todo": userInput};
-    console.log(userInput);
-    let newItem = document.createElement('ul');
+    console.log(input.value);
+
+    if(input.value === "") {
+        event.preventDefault();
+        warning.innerHTML = "Please enter a task";
+    }
+
+
+    if(input.value !== "") {
+        
+        event.preventDefault();
+
+        warning.innerHTML = "";
+
+        const userInput = event.target.querySelector('input').value;
     
-    newItem.innerHTML = 
-    `
-    <li><b>${userInput}</b></li>
-    <li>Important</li>
-    <li>Delete</li>    
-    `;
+        let newItem = document.createElement('ul');
+        
+        newItem.innerHTML = 
+        `
+        <li><b>${userInput}</b></li>
+        <li>Important</li>
+        <li onClick="deleteItem(event)">Delete</li>    
+        `;
+    
+        document.getElementById('result').appendChild(newItem);
+        event.target.querySelector('input').value = "";
+    
+        console.log("SUBMITTED");
 
-    document.getElementById('result').appendChild(newItem);
-    event.target.querySelector('input').value = "";
 
-    console.log("SUBMITTED");
+
+
+    }
+
+
+
+   
+}
+
+
+
+
+function deleteItem(event) {
+    console.log("CLICKED");
+    console.log(event.target.parentNode);
+
+    event.target.parentNode.remove();
 }

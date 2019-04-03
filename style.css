@@ -15,6 +15,7 @@ ul li {
 }
 ul li:first-child {
     font-size: 150%;
+    text-transform: capitalize;
 }
 ul li:nth-child(2n) {
     background-color: #f08585;
@@ -38,4 +39,9 @@ ul li:last-child:hover {
 }
 .mt {
     margin-top: 20px;
+}
+.warning {
+    margin-top: -10px;
+    font-size: 60%;
+    color: #f08585;
 }
