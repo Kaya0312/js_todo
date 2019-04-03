@@ -1,0 +1,41 @@
+ul {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    border: 1px solid rgba(34,36,38,.15);
+    border-left: 7px solid #f08585;    
+    border-radius: 5px;
+    padding: 10px;
+    list-style-type: none;
+    margin-top: 10px;
+}
+ul li {
+    margin-right: 10px;
+}
+ul li:first-child {
+    font-size: 150%;
+}
+ul li:nth-child(2n) {
+    background-color: #f08585;
+    padding: 0px 5px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 70%;
+}
+ul li:last-child {
+    margin-left: auto;
+    margin-right: 5px;
+    font-size: 80%;
+    cursor: pointer;
+}
+ul li:last-child:hover {
+    opacity: 0.6;
+}
+.mr {
+    margin-right: 20px;
+}
+.mt {
+    margin-top: 20px;
+}

@@ -10,18 +10,24 @@
     <title>Document</title>
 </head>
 <body>
-    <body>
-        <form class="additem">
-            <input type="text">
-            <button>SUBMIT</button>
-        </form>
+    <div class="ui container mt">
+        <div class="ui segment">
+            <form class="additem ui form">
+                <div class="field">
+                    <label>Task</label>
+                    <input type="text">
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="">
+                    <label class="mr">Important</label>
+                </div>   
+                    <button class="ui button" type="submit">ADD</button>
+            </form>
+        </div>            
         
-            <div id="result"></div>
-  
+        <div id="result"></div>
+    </div>
 
-
-  </body>
-
-            <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

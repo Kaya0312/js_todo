@@ -13,8 +13,8 @@ fetch('data.json')
             ul.innerHTML = 
             `
             <li><b>${task}</b></li>
-            <li> Status : ${status}</li>
-            <li> Proprity: ${priority} </li>
+            <li> ${priority} </li>
+            <li> Delete </li>
             `;
 
             document.getElementById('result').appendChild(ul);
@@ -38,14 +38,9 @@ function addItem(event) {
     newItem.innerHTML = 
     `
     <li><b>${userInput}</b></li>
-    <li></li>
-    <li></li>
+    <li>Important</li>
+    <li>Delete</li>    
     `;
-
-
-
-
-
 
     document.getElementById('result').appendChild(newItem);
     event.target.querySelector('input').value = "";
