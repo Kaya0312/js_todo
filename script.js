@@ -3,8 +3,6 @@ fetch('data.json')
         return res.json();
     })
     .then(function (data) {
-        // localStorage.setItem('json', JSON.stringify(data));
-
         data.map(item => {
             const { task, status, priority } = item;
 
@@ -13,73 +11,66 @@ fetch('data.json')
             ul.innerHTML = 
             `
             <li><b>${task}</b></li>
-            <li> ${priority} </li>
+            <li>
+            ${priority==='Important' ? '<span>Important</span>':''}
+            </li>
             <li onClick="deleteItem(event)"> Delete </li>
             `;
 
-            document.getElementById('result').appendChild(ul);
-            
+            document.getElementById('result').appendChild(ul);            
         });
-
-        // let storedNames = JSON.parse(localStorage.getItem("json"));
-        // console.log(storedNames);
        })
 
 const input = document.querySelector('.additem');
 input.addEventListener('submit', addItem);
 
-
-
 function addItem(event) {
+    event.preventDefault();
+
     const input = document.querySelector('.userInput');
     const warning = document.querySelector('.warning');
 
-    console.log(input.value);
-
-    if(input.value === "") {
-        event.preventDefault();
+    if(!input.value) {
         warning.innerHTML = "Please enter a task";
     }
 
-
-    if(input.value !== "") {
-        
+    if(input.value !== "") {        
         event.preventDefault();
-
         warning.innerHTML = "";
 
         const userInput = event.target.querySelector('input').value;
-    
+        const checkbox = document.querySelector('.priority');
+
+        const listContainer = document.getElementById('result');
+
         let newItem = document.createElement('ul');
         
         newItem.innerHTML = 
         `
-        <li><b>${userInput}</b></li>
-        <li>Important</li>
+        <li><b>${escapeHtml(userInput)}</b></li>
+        <li> ${checkbox.checked? '<span>Important</span>':''} </li>
         <li onClick="deleteItem(event)">Delete</li>    
         `;
     
-        document.getElementById('result').appendChild(newItem);
-        event.target.querySelector('input').value = "";
-    
-        console.log("SUBMITTED");
+        // document.getElementById('result').appendChild(newItem);
+
+        listContainer.insertBefore(newItem, listContainer.firstChild);
 
 
 
-
-    }
-
-
-
-   
+        event.target.querySelector('input').value = "";    
+    }   
 }
 
-
-
-
 function deleteItem(event) {
-    console.log("CLICKED");
-    console.log(event.target.parentNode);
-
     event.target.parentNode.remove();
+}
+
+function escapeHtml(str) {
+    str = str.replace(/&/g, '&amp;');
+    str = str.replace(/</g, '&lt;');
+    str = str.replace(/>/g, '&gt;');
+    str = str.replace(/"/g, '&quot;');
+    str = str.replace(/'/g, '&#39;');
+    return str;
 }

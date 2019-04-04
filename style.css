@@ -15,11 +15,13 @@ ul li {
 }
 ul li:first-child {
     font-size: 150%;
+}
+ul li:first-child:first-letter {
     text-transform: capitalize;
 }
-ul li:nth-child(2n) {
+ul li:nth-child(2n) span {
     background-color: #f08585;
-    padding: 0px 5px;
+    padding: 3px 5px;
     font-weight: bold;
     border-radius: 3px;
     color: #fff;
@@ -41,7 +43,9 @@ ul li:last-child:hover {
     margin-top: 20px;
 }
 .warning {
-    margin-top: -10px;
-    font-size: 60%;
+    font-size: 70%;
     color: #f08585;
+}
+.block {
+    display: block;
 }

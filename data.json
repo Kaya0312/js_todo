@@ -7,7 +7,7 @@
     {
         "task" : "Read books",
         "status" : "Finished",
-        "priority" : "Important" 
+        "priority" : "" 
     },
     {
         "task" : "Brush teeth",
@@ -22,6 +22,6 @@
     {
         "task" : "Watch YouTube",
         "status" : "Finished",
-        "priority" : "Important" 
+        "priority" : "" 
     }
 ]
